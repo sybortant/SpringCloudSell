@@ -1,0 +1,20 @@
+server:
+  port: 9000
+
+spring:
+  profiles: node1
+
+eureka:
+  instance:
+     # 自动发现并配置IP
+    prefer-ip-address: true
+  client:
+    # register-with-eureka: false / fetch-registry: false 表示不注册到eureka,只做服务端
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      # 向其他节点注册,可以配置配置多个节点地址,中间使用[,]逗号隔开;
+      defaultZone: http://localhost:9001/eureka/,http://localhost:9002/eureka/
+  server:
+  # 开发环境关闭安全检查,避免服务实际已下线了,但注册列表中还显示在线上的情况;
+    enable-self-preservation: false

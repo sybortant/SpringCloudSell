@@ -1,0 +1,19 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: eureka-server
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    # register-with-eureka: false / fetch-registry: false 表示不注册到eureka,只做服务端
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+  # 开发环境关闭安全检查,避免服务实际已下线了,但注册列表中还显示在线上的情况;
+    enable-self-preservation: false

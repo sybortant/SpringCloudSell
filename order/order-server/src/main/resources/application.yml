@@ -1,0 +1,27 @@
+server:
+  port: 8100
+
+spring:
+  application:
+    name: order
+  datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      username: root
+      password: 123456
+      url: jdbc:mysql:///springCloud_Sell?characterEncoding=utf-8&useSSL=false
+  jpa:
+    show-sql: true
+
+
+eureka:
+  client:
+    service-url:
+      # 填写注册中心地址,项目启动后会自动往注册中心注册服务,可以配置多个注册地址,中间使用[,]逗号隔开
+      # defaultZone: http://localhost:9000/eureka/,http://localhost:9001/eureka/,http://localhost:9002/eureka/
+      defaultZone: http://localhost:9000/eureka/
+
+
+# 自定义实例访问规则 默认是轮训 现在改成随机具体的规则是 com.netflix.loadbalancer.IRule 的实现类
+#PRODUCT:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
